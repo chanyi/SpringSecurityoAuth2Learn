@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.chanyi:browser:${security.version}">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/chanyi/browser/${security.version}/browser-${security.version}.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/chanyi/browser/${security.version}/browser-${security.version}-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/chanyi/browser/${security.version}/browser-${security.version}-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
