@@ -1,0 +1,24 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.chanyi.authention.AuthorizationServerConfigurer",
+      "name": "spring.datasource",
+      "sourceMethod": "public javax.sql.DataSource dataSource() ",
+      "type": "javax.sql.DataSource"
+    },
+    {
+      "sourceType": "com.chanyi.dao.DataSourceConfigurer",
+      "name": "spring.datasource",
+      "sourceMethod": "public javax.sql.DataSource dataSource() ",
+      "type": "javax.sql.DataSource"
+    }
+  ],
+  "properties": [
+    {
+      "name": "spring.datasource.jdbc-url",
+      "description": "A description for 'spring.datasource.jdbc-url'",
+      "type": "java.lang.String"
+    }
+  ]
+}
