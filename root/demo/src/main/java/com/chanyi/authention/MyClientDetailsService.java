@@ -15,11 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 public class MyClientDetailsService implements ClientDetailsService {
 
-	@ResponseBody
-	@GetMapping("/test")
-	public String test() {
-		return "this is test";
-	}
 
 	@Override
 	public ClientDetails loadClientByClientId(String clientId) throws ClientRegistrationException {

@@ -24,11 +24,5 @@ public class DataSourceConfigurer{
 		//使用druid数据库连接池
 		return new DruidDataSource();
 	}
-	
-	@ResponseBody
-	@GetMapping("/test")
-	public String test(){
-		return "this is test";
-	}
 
 }

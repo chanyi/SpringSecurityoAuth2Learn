@@ -18,12 +18,6 @@ public class MyClientDetails implements ClientDetails{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@ResponseBody
-	@GetMapping("/test")
-	public String test(){
-		return "this is test";
-	}
-
 	@Override
 	public String getClientId() {
 		// TODO Auto-generated method stub

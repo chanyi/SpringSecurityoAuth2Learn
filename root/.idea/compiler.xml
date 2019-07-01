@@ -10,7 +10,6 @@
         <module name="browser" />
         <module name="core" />
         <module name="demo" />
-        <module name="securityRoot" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

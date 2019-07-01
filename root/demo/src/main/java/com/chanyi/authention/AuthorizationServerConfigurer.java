@@ -19,13 +19,6 @@ import com.chanyi.dao.DataSourceConfigurer;
 @EnableAuthorizationServer
 public class AuthorizationServerConfigurer extends AuthorizationServerConfigurerAdapter {
 	
-	@Bean
-	@Primary
-	@ConfigurationProperties(prefix = "spring.datasource")
-	public DataSource dataSource() {
-		// 配置数据源（注意，我使用的是 HikariCP 连接池），以上注解是指定数据源，否则会有冲突
-		return DataSourceBuilder.create().build();
-	}
 
 	@Bean
 	public ClientDetailsService jdbcClientDetails() {
@@ -34,11 +27,11 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
 		DataSource dataSource = datasourceConfig.dataSource();
 		return new JdbcClientDetailsService(dataSource);
 	}
-    @Override
-    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+//    @Override
+//    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         // 配置客户端
     	//存入数据库的情况
-    	clients.withClientDetails(jdbcClientDetails());
+//    	clients.withClientDetails(jdbcClientDetails());
     	//存入内存的情况
 //        clients
 //                // 使用内存设置
@@ -53,7 +46,7 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
 //                .scopes("app")
 //                // 注册回调地址
 //                .redirectUris("http://www.funtl.com");
-    }
+//    }
     
     	
 }
