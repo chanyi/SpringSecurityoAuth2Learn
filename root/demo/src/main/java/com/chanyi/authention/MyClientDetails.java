@@ -6,17 +6,8 @@ import java.util.Set;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.provider.ClientDetails;
-import org.springframework.security.oauth2.provider.ClientDetailsService;
-import org.springframework.security.oauth2.provider.ClientRegistrationException;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 public class MyClientDetails implements ClientDetails{
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 	@Override
 	public String getClientId() {
@@ -96,4 +87,5 @@ public class MyClientDetails implements ClientDetails{
 		return null;
 	}
 
+	
 }

@@ -27,11 +27,11 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
 		DataSource dataSource = datasourceConfig.dataSource();
 		return new JdbcClientDetailsService(dataSource);
 	}
-//    @Override
-//    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        // 配置客户端
-    	//存入数据库的情况
-//    	clients.withClientDetails(jdbcClientDetails());
+    @Override
+    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+//        配置客户端
+//    	存入数据库的情况
+    	clients.withClientDetails(jdbcClientDetails());
     	//存入内存的情况
 //        clients
 //                // 使用内存设置
@@ -46,7 +46,7 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
 //                .scopes("app")
 //                // 注册回调地址
 //                .redirectUris("http://www.funtl.com");
-//    }
+    }
     
     	
 }
