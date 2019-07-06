@@ -5,7 +5,7 @@ import java.util.Date;
 
 /** */
 
-public class User {
+public class MyUser {
 
   /** */
   private long id;

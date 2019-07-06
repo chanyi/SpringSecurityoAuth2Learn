@@ -4,8 +4,10 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class MyUserDetails implements UserDetails{
 
@@ -13,9 +15,9 @@ public class MyUserDetails implements UserDetails{
 	 * 返回将MyUserDetails 转化为 UserDetails
 	 */
 	
-	private User user;
+	private MyUser user;
 	 
-    public MyUserDetails(User user) {
+    public MyUserDetails(MyUser user) {
         this.user = user;
     }
 	
@@ -24,7 +26,6 @@ public class MyUserDetails implements UserDetails{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	@Override
 	public String getPassword() {
 		return user.getPassword();
