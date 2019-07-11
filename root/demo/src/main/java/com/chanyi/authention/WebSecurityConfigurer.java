@@ -8,7 +8,6 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -72,13 +71,18 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	// public void configure(WebSecurity web) throws Exception {
 	//// web.ignoring().antMatchers("/resources/**")
 	//// .antMatchers("/test/test"); //拦截忽略
-	// }
+//	 }
 
-//	@Bean
-//	public BCryptPasswordEncoder passwordEncoder() {
-//		// 设置默认的加密方式
-//		return new BCryptPasswordEncoder();
-//	}
+	/**
+	 * 注入这个bean，系统会自动将表单传来的密码加密，
+	 * 所以在密码检查的时候也要加上对应的加密方法
+	 * @return
+	 */
+	@Bean
+	public BCryptPasswordEncoder passwordEncoder() {
+		// 设置默认的加密方式，这个加密方法使用加盐技术，每次加密的密码都不一样
+		return new BCryptPasswordEncoder();
+	}
 //
 //	@Bean
 //	public DaoAuthenticationProvider authenticationProvider() {
@@ -93,11 +97,12 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 		// http.httpBasic();默认输入账号密码的验证方式
 		http
 		.formLogin()// 任何人(包括没有经过验证的)都可以访问”/login”和”/login?error”。permitAll()是指用户可以访问formLogin()相关的任何URL
-		.loginPage("/login/login")
+		.loginPage("/userLogin/loginGate")
+		.loginProcessingUrl("/userLogin/login")//页面中登录执行的接口
 		.permitAll()
 		.and()
 		.authorizeRequests().anyRequest().authenticated();
-http.csrf().disable();
+		http.csrf().disable();
 //		http.authorizeRequests().antMatchers("/signup", "/about").permitAll() // #4
 //				.antMatchers("/admin/**").hasRole("ADMIN") // “/admin/”开头的URL必须要是管理员用户，譬如”admin”用户
 //				.anyRequest().authenticated() // #7

@@ -1,4 +1,4 @@
-package com.chanyi.authention;
+package com.chanyi.controller;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +17,6 @@ public class TestController {
 	}
 	
 	public static void main(String[] args){
-//		System.out.println(new BCryptPasswordEncoder().encode("secret"));
-		
+		System.out.println(new BCryptPasswordEncoder().encode("secret"));
 	}
 }

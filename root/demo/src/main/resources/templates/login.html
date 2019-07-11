@@ -42,7 +42,7 @@
         <h1>智能家居登录系统</h1>
         <div class="error" th:class="${error}? 'show error' : 'hide'" th:text="${error}"></div>
         <div class="msg" th:class="${msg}? 'show msg' : 'hide'" th:text="${msg}"></div>
-        <form name='loginForm' action="/login/login" method='POST'>
+        <form name='loginForm' action="/userLogin/login" method='POST'>
             <table>
                 <tr>
                     <td>用户名:</td>
