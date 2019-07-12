@@ -1,4 +1,4 @@
-package com.chanyi.authention;
+package com.chanyi.security;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
@@ -15,6 +15,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.chanyi.configurer.CustomSecurityConfigurer;
+
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
@@ -30,6 +32,8 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	private DataSource dataSource;
 	
 	private final static Log logger = LogFactory.getLog(WebSecurityConfigurer.class);
+	
+	private CustomSecurityConfigurer CustomSecurityConfigurer = new CustomSecurityConfigurer();
 
 	/**
 	 * 配置是内存存储还是数据库存储
@@ -101,16 +105,16 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 		.loginProcessingUrl("/userLogin/login")//页面中登录执行的接口
 		.permitAll()
 		.and()
-		.authorizeRequests().anyRequest().authenticated();
+		.authorizeRequests()
+		.antMatchers("login",CustomSecurityConfigurer.getWeb().getLoginPage())
+		.permitAll()
+		.anyRequest().authenticated();
 		http.csrf().disable();
 //		http.authorizeRequests().antMatchers("/signup", "/about").permitAll() // #4
 //				.antMatchers("/admin/**").hasRole("ADMIN") // “/admin/”开头的URL必须要是管理员用户，譬如”admin”用户
 //				.anyRequest().authenticated() // #7
 //				.and()
 //				.formLogin()// 任何人(包括没有经过验证的)都可以访问”/login”和”/login?error”。permitAll()是指用户可以访问formLogin()相关的任何URL
-//				.loginPage("/login/login")// 注明了登陆页面，意味着用GET访问”/login/login”时，显示登陆页面(自定义页面)
-//				.permitAll(); //
-//		http.csrf().disable();
 		// 安全头的配置
 		// http.headers()
 		// .contentTypeOptions();

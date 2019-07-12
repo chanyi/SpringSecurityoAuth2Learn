@@ -1,4 +1,4 @@
-package com.chanyi.authention;
+package com.chanyi.security;
 
 import java.util.Collection;
 import java.util.Map;
@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import com.chanyi.model.MyUser;
 
 public class MyUserDetails implements UserDetails{
 

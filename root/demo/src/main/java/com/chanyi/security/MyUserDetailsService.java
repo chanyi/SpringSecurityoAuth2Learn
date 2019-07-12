@@ -1,4 +1,4 @@
-package com.chanyi.authention;
+package com.chanyi.security;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

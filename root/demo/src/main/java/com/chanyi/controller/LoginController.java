@@ -1,4 +1,4 @@
-package com.chanyi.authention;
+package com.chanyi.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

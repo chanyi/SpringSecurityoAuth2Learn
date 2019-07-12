@@ -16,6 +16,13 @@ public class JsonResult{
 		this.msg = msg;
 		this.data = data;
 	}
+	
+	public JsonResult(int code, String msg) {
+		super();
+		this.code = code;
+		this.msg = msg;
+		this.data = null;
+	}
 
 	public int getCode() {
 		return code;

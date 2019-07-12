@@ -2,11 +2,32 @@
   "hints": [],
   "groups": [
     {
+      "sourceType": "com.chanyi.configurer.CustomSecurityConfigurer",
+      "name": "security.custom",
+      "type": "com.chanyi.configurer.CustomSecurityConfigurer"
+    },
+    {
       "sourceType": "com.chanyi.dao.DataSourceConfigurer",
       "name": "spring.datasource",
       "sourceMethod": "public javax.sql.DataSource dataSource() ",
       "type": "javax.sql.DataSource"
     }
   ],
-  "properties": []
+  "properties": [
+    {
+      "sourceType": "com.chanyi.configurer.CustomSecurityConfigurer",
+      "name": "security.custom.social",
+      "type": "com.chanyi.configurer.CustomSecurityConfigurerSocial"
+    },
+    {
+      "sourceType": "com.chanyi.configurer.CustomSecurityConfigurer",
+      "name": "security.custom.test",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.chanyi.configurer.CustomSecurityConfigurer",
+      "name": "security.custom.web",
+      "type": "com.chanyi.configurer.CustomSecurityConfigurerWeb"
+    }
+  ]
 }

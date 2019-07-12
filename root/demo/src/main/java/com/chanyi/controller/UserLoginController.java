@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.http.HttpStatus;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
@@ -18,7 +18,9 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.chanyi.configurer.CustomSecurityConfigurer;
 import com.chanyi.model.JsonResult;
+import com.chanyi.model.enums.JsonResultCode;
 
 
 @Controller
@@ -32,11 +34,15 @@ public class UserLoginController {
 	//ss里的重定向方法的封装
 	private RedirectStrategy rediractStrategy = new DefaultRedirectStrategy();
 	
+	@Autowired
+	private CustomSecurityConfigurer configurer;
+	
 	/**
 	 * 登录页
 	 * @return
 	 * @throws IOException 
 	 */
+	@ResponseBody
 	@RequestMapping("/loginGate")
 	public JsonResult loginGate(HttpServletRequest request,HttpServletResponse response) throws IOException{
 		//ss的类saveRequest 
@@ -47,11 +53,15 @@ public class UserLoginController {
 			logger.info("target:"+target);
 			if(StringUtils.endsWithIgnoreCase(target, ".html")){
 				//跳转到登录页，自己定义的或者配置文件里定义的都可以
-				rediractStrategy.sendRedirect(request, response, "");
+				logger.info("重定向到：:"+configurer.getWeb().getLoginPage());
+				logger.info("appid：:"+configurer.getSocial().getWechat().getAppid());
+				logger.info("test：:"+configurer.getTest());
+				logger.info("CustomSecurityConfigurer：:"+new CustomSecurityConfigurer());
+				rediractStrategy.sendRedirect(request, response, configurer.getWeb().getLoginPage());
 			}
 		}
 		logger.info("this is user loginGate");
-		return new JsonResult(401,"","");
+		return new JsonResult(JsonResultCode.no_auth.getCode(),JsonResultCode.no_auth.getMsg());
 	}
 	
 	/**
