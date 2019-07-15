@@ -28,7 +28,6 @@ public class ValidateCodeController {
 	private ValidateCodeGenerator validateCodeGenerator;
 
 	private final  static String SESSION_CODE_IMAGE_CODE = "iamge_code";
-
 	
 	@ResponseBody
 	@GetMapping("/getImage")

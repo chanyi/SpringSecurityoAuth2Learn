@@ -100,8 +100,11 @@ local.properties
 
 
 ############maven==========
-target
-
+root/demo/target
+root/app/target
+root/browser/target
+root/core/target
+root/securityRoot/target
 
 ###############java##############
 # Compiled class file
