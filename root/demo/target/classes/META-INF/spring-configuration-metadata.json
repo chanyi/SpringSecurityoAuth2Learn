@@ -9,7 +9,7 @@
     {
       "sourceType": "com.chanyi.dao.DataSourceConfigurer",
       "name": "spring.datasource",
-      "sourceMethod": "dataSource()",
+      "sourceMethod": "public javax.sql.DataSource dataSource() ",
       "type": "javax.sql.DataSource"
     }
   ],

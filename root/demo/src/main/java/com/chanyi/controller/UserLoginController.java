@@ -44,7 +44,7 @@ public class UserLoginController {
 	 */
 	@ResponseBody
 	@RequestMapping("/loginGate")
-	public JsonResult loginGate(HttpServletRequest request,HttpServletResponse response) throws IOException{
+	public String loginGate(HttpServletRequest request,HttpServletResponse response) throws IOException{
 		//ss的类saveRequest 
 		SavedRequest saveRequest = requestCache.getRequest(request, response);
 		if(saveRequest !=null){
@@ -61,7 +61,14 @@ public class UserLoginController {
 			}
 		}
 		logger.info("this is user loginGate");
-		return new JsonResult(JsonResultCode.no_auth.getCode(),JsonResultCode.no_auth.getMsg());
+//		return new JsonResult(JsonResultCode.no_auth.getCode(),JsonResultCode.no_auth.getMsg());
+		rediractStrategy.sendRedirect(request, response, configurer.getWeb().getLoginPage());
+		return configurer.getWeb().getLoginPage();
+	}
+	
+	@RequestMapping("/loginPage")
+	public String loginPage(HttpServletRequest request,HttpServletResponse response) throws IOException{
+		return "login";
 	}
 	
 	/**

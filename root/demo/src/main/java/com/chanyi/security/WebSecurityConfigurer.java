@@ -101,7 +101,7 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 		// http.httpBasic();默认输入账号密码的验证方式
 		http
 		.formLogin()// 任何人(包括没有经过验证的)都可以访问”/login”和”/login?error”。permitAll()是指用户可以访问formLogin()相关的任何URL
-		.loginPage("/userLogin/loginGate")
+		.loginPage("/userLogin/loginPage")
 		.loginProcessingUrl("/userLogin/login")//页面中登录执行的接口
 		.permitAll()
 		.and()
